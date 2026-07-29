@@ -16,9 +16,14 @@ export default function Contact() {
       >
         <p className="font-serif text-lg text-stone-700">{contact.thanks}</p>
         <div className="h-px w-8 bg-stone-300" />
-        <p className="font-wordmark text-xs tracking-[0.35em] text-stone-500 uppercase md:text-sm">
+        <a
+          href={contact.productUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-wordmark text-xs tracking-[0.35em] text-stone-500 uppercase transition-colors duration-500 hover:text-stone-900 md:text-sm"
+        >
           {contact.wordmark}
-        </p>
+        </a>
         <div className="mt-2 flex flex-col items-center gap-3">
           <a
             href={`mailto:${contact.email}`}
