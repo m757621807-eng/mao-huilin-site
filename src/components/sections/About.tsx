@@ -9,7 +9,7 @@ export default function About() {
       {aboutParagraphs.map((paragraph, i) => (
         <RevealParagraph
           key={i}
-          className="text-center font-serif text-lg leading-loose text-stone-700 md:text-xl"
+          className="text-center font-serif text-lg leading-loose text-stone-500 md:text-xl"
         >
           {paragraph}
         </RevealParagraph>

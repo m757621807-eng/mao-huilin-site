@@ -23,7 +23,7 @@ export default function FurtherReading({ href, title }: Props) {
       <span className="font-wordmark text-[10px] tracking-[0.4em] text-stone-400 uppercase">
         延伸阅读
       </span>
-      <span className="font-serif text-base text-stone-500 italic transition-colors duration-500 group-hover:text-stone-800">
+      <span className="font-serif text-base text-stone-500 italic transition-colors duration-500 group-hover:text-stone-700">
         {title}
       </span>
     </motion.a>

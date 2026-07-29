@@ -16,7 +16,7 @@ export default function LookAI() {
         <span key={i} className="contents">
           <RevealParagraph
             duration={DUR_REVEAL_LONG}
-            className="font-serif text-lg leading-loose text-stone-700 md:text-xl"
+            className="font-serif text-lg leading-loose text-stone-500 md:text-xl"
           >
             {paragraph}
           </RevealParagraph>

@@ -3,11 +3,11 @@ import SectionKicker from "@/components/ui/SectionKicker";
 
 export default function Photography() {
   return (
-    <section className="mx-auto max-w-6xl px-6 py-40">
-      <div className="mb-24 flex justify-center">
+    <section className="mx-auto max-w-6xl px-6 py-20 md:py-40">
+      <div className="mb-16 flex justify-center md:mb-24">
         <SectionKicker>Works</SectionKicker>
       </div>
-      <div className="grid grid-cols-12 gap-x-6 gap-y-32">
+      <div className="grid grid-cols-12 gap-x-6 gap-y-12 md:gap-y-32">
         <PlaceholderBlock
           label="01"
           aspect="aspect-[3/4]"

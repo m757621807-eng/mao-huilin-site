@@ -28,6 +28,18 @@ body {
   color: var(--foreground);
 }
 
+/* Cormorant Garamond renders true oldstyle figures — let dates, numbers,
+   and captions (No. 01, etc.) sit in the text instead of lining up like a table */
+.font-wordmark {
+  font-variant-numeric: oldstyle-nums;
+}
+
+/* Softer line-breaks for long-form paragraphs — avoids orphaned single
+   words stranded on the last line */
+p {
+  text-wrap: pretty;
+}
+
 ::selection {
   background: #e8e3da;
   color: #3a3835;
