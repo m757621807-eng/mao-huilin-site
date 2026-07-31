@@ -8,15 +8,13 @@ const DECISION_READING_INDEX = lookaiParagraphs.indexOf("于是我开始读决�
 
 export default function LookAI() {
   return (
-    <section className="mx-auto flex max-w-2xl flex-col gap-16 px-6 py-48 md:gap-24">
-      <div className="flex justify-center">
-        <SectionKicker>Look AI</SectionKicker>
-      </div>
+    <section className="mx-auto flex max-w-2xl flex-col items-center gap-16 px-6 py-48 md:gap-24">
+      <SectionKicker>Look AI</SectionKicker>
       {lookaiParagraphs.map((paragraph, i) => (
         <span key={i} className="contents">
           <RevealParagraph
             duration={DUR_REVEAL_LONG}
-            className="font-serif text-lg leading-loose text-stone-500 md:text-xl"
+            className="text-center font-serif text-lg leading-loose text-stone-500 md:text-xl"
           >
             {paragraph}
           </RevealParagraph>
