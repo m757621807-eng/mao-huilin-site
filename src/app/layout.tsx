@@ -28,9 +28,27 @@ const cormorant = Cormorant_Garamond({
   display: "swap",
 });
 
+const siteUrl = "https://blog.lookai-hq.com";
+const title = "毛荟琳 MAO HUILIN";
+const description = "毛荟琳 — 模特，决策研究者，LOOK AI 创作者。";
+
 export const metadata: Metadata = {
-  title: "毛荟琳 MAO HUILIN",
-  description: "毛荟琳 — 模特，决策研究者，LOOK AI 创作者。",
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    url: siteUrl,
+    siteName: title,
+    locale: "zh_CN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 export default function RootLayout({
@@ -43,7 +61,7 @@ export default function RootLayout({
       lang="zh"
       className={`${notoSerifSC.variable} ${notoSansSC.variable} ${cormorant.variable} antialiased`}
     >
-      <body className="bg-white text-neutral-800">
+      <body className="bg-background text-foreground">
         <AmbientLight />
         <GrainOverlay />
         <main className="relative z-10">{children}</main>
