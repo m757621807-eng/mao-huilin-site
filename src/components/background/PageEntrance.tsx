@@ -1,17 +1,12 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
-
+// A CSS-only fade so the entrance mask always resolves to transparent even
+// if JS hydration is slow, errors, or the tab loads in the background (a
+// requestAnimationFrame-driven fade can get stuck fully opaque in that case,
+// permanently hiding everything behind it — including AmbientLight).
 export default function PageEntrance() {
-  const reduced = useReducedMotion();
-
   return (
-    <motion.div
+    <div
       aria-hidden
-      className="pointer-events-none fixed inset-0 z-50 bg-background"
-      initial={{ opacity: 1 }}
-      animate={{ opacity: 0 }}
-      transition={{ duration: reduced ? 0.4 : 2.4, delay: reduced ? 0 : 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+      className="page-entrance pointer-events-none fixed inset-0 z-50 bg-background"
     />
   );
 }
