@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useInView } from "framer-motion";
 
 export type ToneId = "hero" | "about" | "lookai" | "photography" | "contact";
@@ -11,12 +11,17 @@ export type ToneWeights = { warm: number; cool: number; violet: number };
 // (see AmbientLight), so they must stay within the valid 0–1 opacity range —
 // values above 1 would just get clamped to 1 by the browser and lose all
 // contrast between "boosted" tones.
+//
+// The swing between a blob's dimmed and boosted state needs to be wide
+// (roughly 3x) to read as a deliberate chapter change rather than getting
+// lost in each blob's own continuous ambient drift, which already varies
+// its own opacity by ~1.5-2x on its own independent loop.
 export const TONE_PRESETS: Record<ToneId, ToneWeights> = {
-  hero: { warm: 0.85, cool: 0.75, violet: 0.65 },
-  about: { warm: 1.0, cool: 0.55, violet: 0.7 },
-  lookai: { warm: 0.55, cool: 1.0, violet: 0.95 },
-  photography: { warm: 0.8, cool: 0.8, violet: 0.8 },
-  contact: { warm: 1.0, cool: 0.6, violet: 0.7 },
+  hero: { warm: 0.7, cool: 0.55, violet: 0.4 },
+  about: { warm: 1.0, cool: 0.3, violet: 0.35 },
+  lookai: { warm: 0.3, cool: 1.0, violet: 0.85 },
+  photography: { warm: 0.65, cool: 0.65, violet: 0.65 },
+  contact: { warm: 1.0, cool: 0.35, violet: 0.4 },
 };
 
 type ToneContextValue = {
@@ -28,11 +33,8 @@ const ToneContext = createContext<ToneContextValue | null>(null);
 
 export function ToneProvider({ children }: { children: React.ReactNode }) {
   const [activeTone, setActiveTone] = useState<ToneId>("hero");
-  return (
-    <ToneContext.Provider value={{ activeTone, setActiveTone }}>
-      {children}
-    </ToneContext.Provider>
-  );
+  const value = useMemo(() => ({ activeTone, setActiveTone }), [activeTone]);
+  return <ToneContext.Provider value={value}>{children}</ToneContext.Provider>;
 }
 
 export function useActiveTone(): ToneId {
