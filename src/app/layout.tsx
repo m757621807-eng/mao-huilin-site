@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Noto_Serif_SC, Noto_Sans_SC, Cormorant_Garamond } from "next/font/google";
 import AmbientLight from "@/components/background/AmbientLight";
 import GrainOverlay from "@/components/background/GrainOverlay";
+import PageEntrance from "@/components/background/PageEntrance";
+import { ToneProvider } from "@/lib/tone-context";
 import "./globals.css";
 
 const notoSerifSC = Noto_Serif_SC({
@@ -62,9 +64,12 @@ export default function RootLayout({
       className={`${notoSerifSC.variable} ${notoSansSC.variable} ${cormorant.variable} antialiased`}
     >
       <body className="bg-background text-foreground">
-        <AmbientLight />
-        <GrainOverlay />
-        <main className="relative z-10">{children}</main>
+        <ToneProvider>
+          <PageEntrance />
+          <AmbientLight />
+          <GrainOverlay />
+          <main className="relative z-10">{children}</main>
+        </ToneProvider>
       </body>
     </html>
   );

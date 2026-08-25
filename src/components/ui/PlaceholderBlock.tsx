@@ -26,10 +26,15 @@ export default function PlaceholderBlock({
       className={`flex flex-col gap-3 ${className ?? ""}`}
     >
       <div
-        className={`relative overflow-hidden bg-stone-100 shadow-[0_1px_3px_rgba(60,55,50,0.06)] ${aspect}`}
+        className={`group relative overflow-hidden bg-stone-100 shadow-[0_1px_3px_rgba(60,55,50,0.06)] ${aspect}`}
       >
         {imgSrc ? (
-          <Image src={imgSrc} alt={label ?? ""} fill className="object-cover" />
+          <Image
+            src={imgSrc}
+            alt={label ?? ""}
+            fill
+            className="object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-[1.04]"
+          />
         ) : (
           <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-transparent to-stone-200/50" />
         )}

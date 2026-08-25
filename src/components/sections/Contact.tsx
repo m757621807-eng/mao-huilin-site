@@ -2,11 +2,17 @@
 
 import { motion } from "framer-motion";
 import { DUR_CONTACT, EASE_SLOW, VIEWPORT_ONCE } from "@/lib/motion";
+import { useToneZone } from "@/lib/tone-context";
 import { contact } from "@/content/contact";
 
 export default function Contact() {
+  const ref = useToneZone("contact");
+
   return (
-    <section className="flex min-h-screen flex-col items-center justify-center gap-8 px-6 py-32 text-center">
+    <section
+      ref={ref}
+      className="flex min-h-screen flex-col items-center justify-center gap-8 px-6 py-32 text-center"
+    >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

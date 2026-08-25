@@ -2,11 +2,17 @@
 
 import { motion } from "framer-motion";
 import { DUR_HERO, EASE_SLOW } from "@/lib/motion";
+import { useToneZone } from "@/lib/tone-context";
 import ScrollCue from "@/components/ui/ScrollCue";
 
 export default function Hero() {
+  const ref = useToneZone("hero");
+
   return (
-    <section className="relative flex h-screen flex-col items-center justify-center px-6">
+    <section
+      ref={ref}
+      className="relative flex h-screen flex-col items-center justify-center px-6"
+    >
       <motion.div
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}

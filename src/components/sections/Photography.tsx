@@ -1,9 +1,14 @@
+"use client";
+
 import PlaceholderBlock from "@/components/ui/PlaceholderBlock";
 import SectionKicker from "@/components/ui/SectionKicker";
+import { useToneZone } from "@/lib/tone-context";
 
 export default function Photography() {
+  const ref = useToneZone("photography");
+
   return (
-    <section className="mx-auto max-w-6xl px-6 py-20 md:py-40">
+    <section ref={ref} className="mx-auto max-w-6xl px-6 py-20 md:py-40">
       <div className="mb-16 flex justify-center md:mb-24">
         <SectionKicker>Works</SectionKicker>
       </div>

@@ -1,14 +1,22 @@
+"use client";
+
 import RevealParagraph from "@/components/ui/RevealParagraph";
 import SectionKicker from "@/components/ui/SectionKicker";
 import FurtherReading from "@/components/ui/FurtherReading";
 import { DUR_REVEAL_LONG } from "@/lib/motion";
+import { useToneZone } from "@/lib/tone-context";
 import { lookaiParagraphs } from "@/content/lookai";
 
 const DECISION_READING_INDEX = lookaiParagraphs.indexOf("于是我开始读决策。");
 
 export default function LookAI() {
+  const ref = useToneZone("lookai");
+
   return (
-    <section className="mx-auto flex max-w-2xl flex-col items-center gap-16 px-6 py-48 md:gap-24">
+    <section
+      ref={ref}
+      className="mx-auto flex max-w-2xl flex-col items-center gap-16 px-6 py-48 md:gap-24"
+    >
       <SectionKicker>Look AI</SectionKicker>
       {lookaiParagraphs.map((paragraph, i) => (
         <span key={i} className="contents">
