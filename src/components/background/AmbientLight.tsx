@@ -11,10 +11,7 @@ import {
 } from "framer-motion";
 import { useActiveTone, TONE_PRESETS } from "@/lib/tone-context";
 
-type ToneKey = keyof (typeof TONE_PRESETS)["hero"];
-
 type Blob = {
-  tone: ToneKey;
   className: string;
   gradient: string;
   duration: number;
@@ -22,25 +19,22 @@ type Blob = {
   scrollRange: [number, number];
 };
 
-// Two neutral elements: a warm "light" patch and a true dark "shadow"
-// patch. No named hues (no amber/violet) — just brightness moving through
-// the room. Colors need real distance from the page background (#fdfcfa /
-// 253,252,250) to be visible at all once blurred and dimmed.
+// A single soft blue-grey light, nothing else. Needs real distance from the
+// page background (#fdfcfa / 253,252,250) to be visible once blurred and
+// dimmed — a near-white blue reads as nothing at all.
 const blobs: Blob[] = [
   {
-    tone: "light",
     className: "left-[-10%] top-[-15%] h-[75vw] w-[75vw]",
     gradient:
-      "radial-gradient(circle, rgba(255,244,220,0.85) 0%, rgba(255,244,220,0) 70%)",
+      "radial-gradient(circle, rgba(196,215,236,0.75) 0%, rgba(196,215,236,0) 70%)",
     duration: 62,
     drift: { x: [0, 45, -25, 0], y: [0, 35, 65, 0] },
     scrollRange: [-60, 40],
   },
   {
-    tone: "shadow",
-    className: "right-[-20%] bottom-[-15%] h-[70vw] w-[70vw]",
+    className: "right-[-20%] bottom-[-15%] h-[65vw] w-[65vw]",
     gradient:
-      "radial-gradient(circle, rgba(70,68,64,0.22) 0%, rgba(70,68,64,0) 70%)",
+      "radial-gradient(circle, rgba(196,215,236,0.55) 0%, rgba(196,215,236,0) 70%)",
     duration: 78,
     drift: { x: [0, -35, 25, 0], y: [0, -30, 40, 0] },
     scrollRange: [50, -70],
@@ -51,6 +45,7 @@ export default function AmbientLight() {
   const prefersReducedMotion = useReducedMotion();
   const { scrollYProgress } = useScroll();
   const activeTone = useActiveTone();
+  const toneWeight = TONE_PRESETS[activeTone];
 
   return (
     <div
@@ -63,7 +58,7 @@ export default function AmbientLight() {
           blob={blob}
           scrollYProgress={scrollYProgress}
           reduced={!!prefersReducedMotion}
-          toneWeight={TONE_PRESETS[activeTone][blob.tone]}
+          toneWeight={toneWeight}
         />
       ))}
     </div>
