@@ -22,37 +22,28 @@ type Blob = {
   scrollRange: [number, number];
 };
 
-// Colors need real distance from the page background (#fdfcfa / 253,252,250)
-// — the original tones (255,250,240 etc.) were only a few RGB units off,
-// which is invisible once diluted by blur and opacity. These push further
-// into amber/blue/lavender so the wash actually reads against the page.
+// Two neutral elements: a warm "light" patch and a true dark "shadow"
+// patch. No named hues (no amber/violet) — just brightness moving through
+// the room. Colors need real distance from the page background (#fdfcfa /
+// 253,252,250) to be visible at all once blurred and dimmed.
 const blobs: Blob[] = [
   {
-    tone: "warm",
-    className: "left-[-10%] top-[-10%] h-[70vw] w-[70vw]",
+    tone: "light",
+    className: "left-[-10%] top-[-15%] h-[75vw] w-[75vw]",
     gradient:
-      "radial-gradient(circle, rgba(255,231,196,0.7) 0%, rgba(255,231,196,0) 70%)",
-    duration: 58,
-    drift: { x: [0, 40, -20, 0], y: [0, 30, 60, 0] },
+      "radial-gradient(circle, rgba(255,244,220,0.85) 0%, rgba(255,244,220,0) 70%)",
+    duration: 62,
+    drift: { x: [0, 45, -25, 0], y: [0, 35, 65, 0] },
     scrollRange: [-60, 40],
   },
   {
-    tone: "cool",
-    className: "right-[-15%] top-[20%] h-[60vw] w-[60vw]",
+    tone: "shadow",
+    className: "right-[-20%] bottom-[-15%] h-[70vw] w-[70vw]",
     gradient:
-      "radial-gradient(circle, rgba(208,222,238,0.6) 0%, rgba(208,222,238,0) 70%)",
-    duration: 73,
-    drift: { x: [0, -30, 20, 0], y: [0, 50, -30, 0] },
+      "radial-gradient(circle, rgba(70,68,64,0.22) 0%, rgba(70,68,64,0) 70%)",
+    duration: 78,
+    drift: { x: [0, -35, 25, 0], y: [0, -30, 40, 0] },
     scrollRange: [50, -70],
-  },
-  {
-    tone: "violet",
-    className: "left-[10%] bottom-[-10%] h-[65vw] w-[65vw]",
-    gradient:
-      "radial-gradient(circle, rgba(228,214,244,0.55) 0%, rgba(228,214,244,0) 70%)",
-    duration: 85,
-    drift: { x: [0, 25, -35, 0], y: [0, -40, 20, 0] },
-    scrollRange: [-40, 60],
   },
 ];
 

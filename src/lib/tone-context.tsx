@@ -5,23 +5,22 @@ import { useInView } from "framer-motion";
 
 export type ToneId = "hero" | "about" | "lookai" | "photography" | "contact";
 
-export type ToneWeights = { warm: number; cool: number; violet: number };
+// Two neutral channels only — a warm "light" patch and a true dark "shadow"
+// patch — rather than named hues (amber/violet), which read as garish
+// "yellow"/"purple" blobs instead of light moving through a room.
+export type ToneWeights = { light: number; shadow: number };
 
 // Weights are plain CSS opacity multipliers applied to an already-dim base
 // (see AmbientLight), so they must stay within the valid 0–1 opacity range —
 // values above 1 would just get clamped to 1 by the browser and lose all
-// contrast between "boosted" tones.
-//
-// The swing between a blob's dimmed and boosted state needs to be wide
-// (roughly 3x) to read as a deliberate chapter change rather than getting
-// lost in each blob's own continuous ambient drift, which already varies
-// its own opacity by ~1.5-2x on its own independent loop.
+// contrast between "boosted" tones. The swing between a blob's dimmed and
+// boosted state stays wide (~3x) so the chapter change reads clearly.
 export const TONE_PRESETS: Record<ToneId, ToneWeights> = {
-  hero: { warm: 0.6, cool: 0.5, violet: 0.4 },
-  about: { warm: 1.0, cool: 0.35, violet: 0.4 },
-  lookai: { warm: 0.35, cool: 1.0, violet: 0.9 },
-  photography: { warm: 0.65, cool: 0.65, violet: 0.65 },
-  contact: { warm: 1.0, cool: 0.4, violet: 0.45 },
+  hero: { light: 0.55, shadow: 0.4 },
+  about: { light: 1.0, shadow: 0.3 },
+  lookai: { light: 0.35, shadow: 1.0 },
+  photography: { light: 0.7, shadow: 0.55 },
+  contact: { light: 1.0, shadow: 0.35 },
 };
 
 type ToneContextValue = {
