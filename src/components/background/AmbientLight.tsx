@@ -116,7 +116,7 @@ function BlobLayer({
       className={`absolute ${blob.className}`}
       style={{ y: reduced ? 0 : scrollY }}
     >
-      <motion.div style={{ opacity: toneOpacity }}>
+      <motion.div className="h-full w-full" style={{ opacity: toneOpacity }}>
         <motion.div
           className="h-full w-full rounded-full blur-3xl will-change-transform"
           style={{ background: blob.gradient }}
