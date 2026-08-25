@@ -11,11 +11,11 @@ export type ToneId = "hero" | "about" | "lookai" | "photography" | "contact";
 // Kept under ~0.8 everywhere so the light stays soft and hushed rather than
 // asserting itself, even in LOOK AI where it's most present.
 export const TONE_PRESETS: Record<ToneId, number> = {
-  hero: 0.32,
-  about: 0.22,
-  lookai: 0.65,
-  photography: 0.4,
-  contact: 0.26,
+  hero: 0.38,
+  about: 0.26,
+  lookai: 0.78,
+  photography: 0.48,
+  contact: 0.3,
 };
 
 type ToneContextValue = {

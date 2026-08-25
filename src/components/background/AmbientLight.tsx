@@ -34,7 +34,7 @@ const SHADOW = "150,166,190";
 const blobs: Blob[] = [
   {
     className: "left-[-12%] top-[-18%] h-[78vw] w-[78vw]",
-    gradient: `radial-gradient(circle, rgba(${LIGHT},0.48) 0%, rgba(${LIGHT},0) 70%)`,
+    gradient: `radial-gradient(circle, rgba(${LIGHT},0.58) 0%, rgba(${LIGHT},0) 70%)`,
     duration: 150,
     drift: { x: [0, 35, 55, -20, -40, 0], y: [0, 40, 10, 60, 20, 0] },
     breathe: [1, 1.06, 0.97, 1.04, 1],
@@ -43,7 +43,7 @@ const blobs: Blob[] = [
   },
   {
     className: "right-[-22%] bottom-[-18%] h-[68vw] w-[68vw]",
-    gradient: `radial-gradient(circle, rgba(${LIGHT},0.32) 0%, rgba(${LIGHT},0) 70%)`,
+    gradient: `radial-gradient(circle, rgba(${LIGHT},0.4) 0%, rgba(${LIGHT},0) 70%)`,
     duration: 185,
     drift: { x: [0, -30, -50, 25, 15, 0], y: [0, -35, 15, -20, -50, 0] },
     breathe: [1, 0.95, 1.05, 0.98, 1],
@@ -55,7 +55,7 @@ const blobs: Blob[] = [
     // shade separate and re-merge as you scroll — the "flow" is in how they
     // move apart, not just that each one moves.
     className: "left-[15%] top-[30%] h-[55vw] w-[55vw]",
-    gradient: `radial-gradient(circle, rgba(${SHADOW},0.28) 0%, rgba(${SHADOW},0) 72%)`,
+    gradient: `radial-gradient(circle, rgba(${SHADOW},0.36) 0%, rgba(${SHADOW},0) 72%)`,
     duration: 220,
     drift: { x: [0, -25, 30, -15, 20, 0], y: [0, 25, -20, 30, -10, 0] },
     breathe: [1, 1.08, 0.94, 1.03, 1],
