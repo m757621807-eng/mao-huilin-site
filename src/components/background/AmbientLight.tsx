@@ -18,36 +18,40 @@ type Blob = {
   className: string;
   gradient: string;
   duration: number;
-  drift: { x: number[]; y: number[]; opacity: number[] };
+  drift: { x: number[]; y: number[] };
   scrollRange: [number, number];
 };
 
+// Colors need real distance from the page background (#fdfcfa / 253,252,250)
+// — the original tones (255,250,240 etc.) were only a few RGB units off,
+// which is invisible once diluted by blur and opacity. These push further
+// into amber/blue/lavender so the wash actually reads against the page.
 const blobs: Blob[] = [
   {
     tone: "warm",
     className: "left-[-10%] top-[-10%] h-[70vw] w-[70vw]",
     gradient:
-      "radial-gradient(circle, rgba(255,250,240,0.65) 0%, rgba(255,250,240,0) 70%)",
+      "radial-gradient(circle, rgba(255,231,196,0.7) 0%, rgba(255,231,196,0) 70%)",
     duration: 58,
-    drift: { x: [0, 40, -20, 0], y: [0, 30, 60, 0], opacity: [0.25, 0.4, 0.2, 0.25] },
+    drift: { x: [0, 40, -20, 0], y: [0, 30, 60, 0] },
     scrollRange: [-60, 40],
   },
   {
     tone: "cool",
     className: "right-[-15%] top-[20%] h-[60vw] w-[60vw]",
     gradient:
-      "radial-gradient(circle, rgba(235,240,245,0.6) 0%, rgba(235,240,245,0) 70%)",
+      "radial-gradient(circle, rgba(208,222,238,0.6) 0%, rgba(208,222,238,0) 70%)",
     duration: 73,
-    drift: { x: [0, -30, 20, 0], y: [0, 50, -30, 0], opacity: [0.2, 0.35, 0.18, 0.2] },
+    drift: { x: [0, -30, 20, 0], y: [0, 50, -30, 0] },
     scrollRange: [50, -70],
   },
   {
     tone: "violet",
     className: "left-[10%] bottom-[-10%] h-[65vw] w-[65vw]",
     gradient:
-      "radial-gradient(circle, rgba(250,245,255,0.55) 0%, rgba(250,245,255,0) 70%)",
+      "radial-gradient(circle, rgba(228,214,244,0.55) 0%, rgba(228,214,244,0) 70%)",
     duration: 85,
-    drift: { x: [0, 25, -35, 0], y: [0, -40, 20, 0], opacity: [0.18, 0.3, 0.22, 0.18] },
+    drift: { x: [0, 25, -35, 0], y: [0, -40, 20, 0] },
     scrollRange: [-40, 60],
   },
 ];
@@ -106,11 +110,7 @@ function BlobLayer({
         <motion.div
           className="h-full w-full rounded-full blur-3xl will-change-transform"
           style={{ background: blob.gradient }}
-          animate={
-            reduced
-              ? { opacity: blob.drift.opacity[0] }
-              : { x: blob.drift.x, y: blob.drift.y, opacity: blob.drift.opacity }
-          }
+          animate={reduced ? undefined : { x: blob.drift.x, y: blob.drift.y }}
           transition={
             reduced
               ? undefined

@@ -17,11 +17,11 @@ export type ToneWeights = { warm: number; cool: number; violet: number };
 // lost in each blob's own continuous ambient drift, which already varies
 // its own opacity by ~1.5-2x on its own independent loop.
 export const TONE_PRESETS: Record<ToneId, ToneWeights> = {
-  hero: { warm: 0.7, cool: 0.55, violet: 0.4 },
-  about: { warm: 1.0, cool: 0.3, violet: 0.35 },
-  lookai: { warm: 0.3, cool: 1.0, violet: 0.85 },
+  hero: { warm: 0.6, cool: 0.5, violet: 0.4 },
+  about: { warm: 1.0, cool: 0.35, violet: 0.4 },
+  lookai: { warm: 0.35, cool: 1.0, violet: 0.9 },
   photography: { warm: 0.65, cool: 0.65, violet: 0.65 },
-  contact: { warm: 1.0, cool: 0.35, violet: 0.4 },
+  contact: { warm: 1.0, cool: 0.4, violet: 0.45 },
 };
 
 type ToneContextValue = {
