@@ -8,12 +8,14 @@ export type ToneId = "hero" | "about" | "lookai" | "photography" | "contact";
 // Single channel: how present the blue light is in this chapter.
 // Values are plain CSS opacity multipliers (see AmbientLight), so they must
 // stay within 0–1 — anything above 1 just clamps to 1 and loses contrast.
+// Kept under ~0.8 everywhere so the light stays soft and hushed rather than
+// asserting itself, even in LOOK AI where it's most present.
 export const TONE_PRESETS: Record<ToneId, number> = {
-  hero: 0.5,
-  about: 0.35,
-  lookai: 1.0,
-  photography: 0.6,
-  contact: 0.4,
+  hero: 0.32,
+  about: 0.22,
+  lookai: 0.65,
+  photography: 0.4,
+  contact: 0.26,
 };
 
 type ToneContextValue = {
